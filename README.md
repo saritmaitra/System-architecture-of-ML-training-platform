@@ -68,12 +68,34 @@ However, I always prefer to add some manual stages into the deployment pipeline,
 ### Experiments Tracking
 It is quite common that we will have multiple experiments being tried in parallel, and many of them might not ever make it to production. This experimentation approach during the research phase is different than a more traditional software development process, as we expect that the code for many of these experiments will be thrown away, and only a few of them will be deemed worthy of making it to production. From the CI automation perspective, we actually do want to train multiple models for each experiment, and gather metrics that will inform us which model can move to the next stage of the deployment pipeline. Both DVC and MLFlow provides an API and a web interface to visualize the multiple experiment runs, along with their parameters and performance metrics.
 
-### CI/CD Orchestration:
+## CI/CD Orchestration:
 Wnen we have all of the key building blocks in place, we need to tie everything together, and this is where our CI/CD orchestration. Eitherv we continue using Azure CI/CD or as usual, I choose to keep option open with GoCD (https://www.gocd.org/).
+
+However, here, I must mention that, CI/CD pipeline may sound like overhead, but it isn’t really the fact. It is essentially a runnable specification of the steps that any software developer needs to perform to deliver a new version of a software product. In the absence of an automated pipeline, engineers would still need to perform these steps manually, and hence far less productively.
+
+Let us understand the lements of CI/CD pipeline. Most software releases go through a couple of typical stages:
+
+![](image/Stages-CI_CD_pipeline.PNG)
+
+### Source stage
+In most cases, CI/CD pipeline run is triggered by source code repository. Any change in code triggers a notification to the CI/CD tool, which runs the corresponding pipeline. Other common triggers include automatically scheduled or user-initiated workflows, as well as results of other pipelines.
 
 We need to define a process for rollbacks in CI/CD, in case a deployed model turns out to perform poorly or incorrectly in production. 
 
-### Model Monitoring and Observability
+### Build stage
+When we combine the source code and its dependencies to build a runnable instance of our product that we can potentially deliver to our end users. Programs written in languages such as Java, C/C++, or Go need to be compiled, whereas Ruby, Python and JavaScript programs work without this step.
+
+Regardless of the language, cloud-native software is typically deployed with Docker, in which case this stage of the CI/CD pipeline builds the Docker containers.
+
+Failure to pass the build stage is an indicator of a fundamental problem in our project’s configuration, and it’s best to address it immediately.
+
+### Test stage
+Here, we run automated tests to validate our code and the behavior of our product. Test stage acts as a safety net that prevents easily reproducible bugs from reaching the end-users. In case of large-scale projects, the tests run in multiple stages, from smoke tests that perform quick sanity checks to end-to-end integration tests that test the entire system from the user’s point of view.
+
+### Deploy stages
+Once a runnable instance of our code has been built with all necessary tests, we’re ready to deploy it. The initial deploy environments is "staging" environment which is used internally by the product team, and finally a "production" environment for end-users. Agile model of development can be used here
+
+## Model Monitoring and Observability
 Collecting monitoring and observability data is important & critical when we have multiple models deployed in production. We can use EFK stack for monitoring and observability which comprises of:
  -  ElasticSearch
  -  FluentID
