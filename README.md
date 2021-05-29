@@ -93,7 +93,10 @@ Failure to pass the build stage is an indicator of a fundamental problem in our 
 Here, we run automated tests to validate our code and the behavior of our product. Test stage acts as a safety net that prevents easily reproducible bugs from reaching the end-users. In case of large-scale projects, the tests run in multiple stages, from smoke tests that perform quick sanity checks to end-to-end integration tests that test the entire system from the user’s point of view.
 
 ### Deploy stages
-Once a runnable instance of our code has been built with all necessary tests, we’re ready to deploy it. The initial deploy environments is "staging" environment which is used internally by the product team, and finally a "production" environment for end-users. Agile model of development can be used here
+Once a runnable instance of our code has been built with all necessary tests, we’re ready to deploy it. The initial deploy environments is "staging" environment which is used internally by the product team, and finally a "production" environment for end-users. Agile model of development can be used here.
+
+### Why AGILE is important here?
+From my real-time experinece, it is quite imporssible to determine a specific timeline considering the involvement of applied research and exploratory work. Most DS projects require trial and error by going down different paths and trying different techniques. Therefore, Agile (SCRUM framework) is most suitable workflow for data science work. One important aspect to be noted here that, though AGILE approach provides more flexibility to clients; it givem them the opportunities to change their mind as the project develops. However, there is a trade-off; flexibility is costly in both time and money. Therefore, expectations need to be set at the begining.
 
 ## Model Monitoring and Observability
 Collecting monitoring and observability data is important & critical when we have multiple models deployed in production. We can use EFK stack for monitoring and observability which comprises of:
