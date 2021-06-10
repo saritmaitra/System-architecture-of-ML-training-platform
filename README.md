@@ -19,7 +19,7 @@ Stages 1-3 are for scalable cloud data solution (storage and preprocessing)
  - During data labelling, I will have choices e.g. go either open souce (label studio) or dedicated (Google Data Labeling) which makes life easier. 
  - During EDA (exploratory data analysis), depending on use case we may choose Spark (realtime processing) or Azure Data Factory (gives us UI driven/less code option).
 
-Assuming that, the data required to train useful ML models, will likely not be structured exactly the way we might need, therefore EDA is the first technical component: discoverabilty and accessibility of data. Regardless of whatever system architecture we develop, we want to ensure that data is easily docoverable and accessible to the stakeholders. 
+Assuming that, the data required to train useful ML models, will likely not be structured exactly the way we might need, therefore EDA is the first technical component: discoverabilty and accessibility of data. Regardless of whatever system architecture we develop, we want to ensure that data is easily discoverable and accessible to the stakeholders. 
 
 Data versioning is a broad area but to summarize that, we need to have a simple approach to version our dataset based on the folder structure and file naming conventions.
 
