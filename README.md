@@ -24,7 +24,7 @@ Assuming that, the data required to train useful ML models, will likely not be s
 Data versioning is a broad area but to summarize that, we need to have a simple approach to version our dataset based on the folder structure and file naming conventions.
 
 ### Data Pipelines
-Though ETL like Azure Data Factpry (ADF) provides transformation and processing steps through a GUI, however, there are open source tools available too where we can define the data pipeline in code, which is easier to version control, test, and deploy. For Spark, we have the data pipeline written in Scala, which can be tested using using spark-testing-base, which can be packaged the job as a JAR artifact that can be versioned and deployed on a deployment pipeline in CI/CD.
+Though ETL like Azure Data Factory (ADF) provides transformation and processing steps through a GUI, however, there are open source tools available too where we can define the data pipeline in code, which is easier to version control, test, and deploy. For Spark, we have the data pipeline written in Scala, which can be tested using using spark-testing-base, which can be packaged the job as a JAR artifact that can be versioned and deployed on a deployment pipeline in CI/CD.
 
 Data Pipeline is either running as a batch job or as a long-running streaming application and can be potential source of integration issues if they change the output that either our model or our application expect. So, integration and contract test as part of deployment pipelines is useful to catch those mistakes.
 
